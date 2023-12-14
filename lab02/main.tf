@@ -135,7 +135,9 @@ resource "aws_instance" "web_server" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t2.micro"
   subnet_id     = aws_subnet.public_subnets["public_subnet_1"].id
+  associate_public_ip_address = true
   tags = {
     Name = "Ubuntu EC2 Server"
   }
 }
+
