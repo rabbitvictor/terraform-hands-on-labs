@@ -1,0 +1,172 @@
+digraph {
+	compound = "true"
+	newrank = "true"
+	subgraph "root" {
+		"[root] aws_eip.nat_gateway_eip (expand)" [label = "aws_eip.nat_gateway_eip", shape = "box"]
+		"[root] aws_instance.web_server (expand)" [label = "aws_instance.web_server", shape = "box"]
+		"[root] aws_internet_gateway.internet_gateway (expand)" [label = "aws_internet_gateway.internet_gateway", shape = "box"]
+		"[root] aws_key_pair.generated (expand)" [label = "aws_key_pair.generated", shape = "box"]
+		"[root] aws_nat_gateway.nat_gateway (expand)" [label = "aws_nat_gateway.nat_gateway", shape = "box"]
+		"[root] aws_route_table.private_route_table (expand)" [label = "aws_route_table.private_route_table", shape = "box"]
+		"[root] aws_route_table.public_route_table (expand)" [label = "aws_route_table.public_route_table", shape = "box"]
+		"[root] aws_route_table_association.private (expand)" [label = "aws_route_table_association.private", shape = "box"]
+		"[root] aws_route_table_association.public (expand)" [label = "aws_route_table_association.public", shape = "box"]
+		"[root] aws_security_group.ingress-ssh (expand)" [label = "aws_security_group.ingress-ssh", shape = "box"]
+		"[root] aws_security_group.vpc-ping (expand)" [label = "aws_security_group.vpc-ping", shape = "box"]
+		"[root] aws_security_group.vpc-web (expand)" [label = "aws_security_group.vpc-web", shape = "box"]
+		"[root] aws_subnet.private_subnets (expand)" [label = "aws_subnet.private_subnets", shape = "box"]
+		"[root] aws_subnet.public_subnets (expand)" [label = "aws_subnet.public_subnets", shape = "box"]
+		"[root] aws_subnet.variables_subnet (expand)" [label = "aws_subnet.variables_subnet", shape = "box"]
+		"[root] aws_vpc.vpc (expand)" [label = "aws_vpc.vpc", shape = "box"]
+		"[root] data.aws_ami.ubuntu (expand)" [label = "data.aws_ami.ubuntu", shape = "box"]
+		"[root] data.aws_ami.ubuntu_22_04 (expand)" [label = "data.aws_ami.ubuntu_22_04", shape = "box"]
+		"[root] data.aws_availability_zones.available (expand)" [label = "data.aws_availability_zones.available", shape = "box"]
+		"[root] data.aws_region.current (expand)" [label = "data.aws_region.current", shape = "box"]
+		"[root] local_file.private_key_pem (expand)" [label = "local_file.private_key_pem", shape = "box"]
+		"[root] module.server.aws_instance.web (expand)" [label = "module.server.aws_instance.web", shape = "box"]
+		"[root] module.server_subnet_1.aws_instance.web (expand)" [label = "module.server_subnet_1.aws_instance.web", shape = "box"]
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"]" [label = "provider[\"registry.terraform.io/hashicorp/aws\"]", shape = "diamond"]
+		"[root] provider[\"registry.terraform.io/hashicorp/local\"]" [label = "provider[\"registry.terraform.io/hashicorp/local\"]", shape = "diamond"]
+		"[root] provider[\"registry.terraform.io/hashicorp/tls\"]" [label = "provider[\"registry.terraform.io/hashicorp/tls\"]", shape = "diamond"]
+		"[root] tls_private_key.generated (expand)" [label = "tls_private_key.generated", shape = "box"]
+		"[root] var.aws_region" [label = "var.aws_region", shape = "note"]
+		"[root] var.environment" [label = "var.environment", shape = "note"]
+		"[root] var.private_subnets" [label = "var.private_subnets", shape = "note"]
+		"[root] var.public_subnets" [label = "var.public_subnets", shape = "note"]
+		"[root] var.variables_sub_auto_ip" [label = "var.variables_sub_auto_ip", shape = "note"]
+		"[root] var.variables_sub_az" [label = "var.variables_sub_az", shape = "note"]
+		"[root] var.variables_sub_cidr" [label = "var.variables_sub_cidr", shape = "note"]
+		"[root] var.vpc_cidr" [label = "var.vpc_cidr", shape = "note"]
+		"[root] var.vpc_name" [label = "var.vpc_name", shape = "note"]
+		"[root] aws_eip.nat_gateway_eip (expand)" -> "[root] aws_internet_gateway.internet_gateway (expand)"
+		"[root] aws_instance.web_server (expand)" -> "[root] aws_key_pair.generated (expand)"
+		"[root] aws_instance.web_server (expand)" -> "[root] aws_security_group.ingress-ssh (expand)"
+		"[root] aws_instance.web_server (expand)" -> "[root] aws_security_group.vpc-ping (expand)"
+		"[root] aws_instance.web_server (expand)" -> "[root] aws_security_group.vpc-web (expand)"
+		"[root] aws_instance.web_server (expand)" -> "[root] aws_subnet.public_subnets (expand)"
+		"[root] aws_instance.web_server (expand)" -> "[root] data.aws_ami.ubuntu_22_04 (expand)"
+		"[root] aws_instance.web_server (expand)" -> "[root] local.application (expand)"
+		"[root] aws_instance.web_server (expand)" -> "[root] local.server_name (expand)"
+		"[root] aws_instance.web_server (expand)" -> "[root] local.team (expand)"
+		"[root] aws_instance.web_server (expand)" -> "[root] local_file.private_key_pem (expand)"
+		"[root] aws_internet_gateway.internet_gateway (expand)" -> "[root] aws_vpc.vpc (expand)"
+		"[root] aws_key_pair.generated (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_key_pair.generated (expand)" -> "[root] tls_private_key.generated (expand)"
+		"[root] aws_nat_gateway.nat_gateway (expand)" -> "[root] aws_eip.nat_gateway_eip (expand)"
+		"[root] aws_nat_gateway.nat_gateway (expand)" -> "[root] aws_subnet.public_subnets (expand)"
+		"[root] aws_route_table.private_route_table (expand)" -> "[root] aws_nat_gateway.nat_gateway (expand)"
+		"[root] aws_route_table.public_route_table (expand)" -> "[root] aws_internet_gateway.internet_gateway (expand)"
+		"[root] aws_route_table_association.private (expand)" -> "[root] aws_route_table.private_route_table (expand)"
+		"[root] aws_route_table_association.private (expand)" -> "[root] aws_subnet.private_subnets (expand)"
+		"[root] aws_route_table_association.public (expand)" -> "[root] aws_route_table.public_route_table (expand)"
+		"[root] aws_route_table_association.public (expand)" -> "[root] aws_subnet.public_subnets (expand)"
+		"[root] aws_security_group.ingress-ssh (expand)" -> "[root] aws_vpc.vpc (expand)"
+		"[root] aws_security_group.vpc-ping (expand)" -> "[root] aws_vpc.vpc (expand)"
+		"[root] aws_security_group.vpc-web (expand)" -> "[root] aws_vpc.vpc (expand)"
+		"[root] aws_subnet.private_subnets (expand)" -> "[root] aws_vpc.vpc (expand)"
+		"[root] aws_subnet.private_subnets (expand)" -> "[root] data.aws_availability_zones.available (expand)"
+		"[root] aws_subnet.private_subnets (expand)" -> "[root] var.private_subnets"
+		"[root] aws_subnet.public_subnets (expand)" -> "[root] aws_vpc.vpc (expand)"
+		"[root] aws_subnet.public_subnets (expand)" -> "[root] data.aws_availability_zones.available (expand)"
+		"[root] aws_subnet.public_subnets (expand)" -> "[root] var.public_subnets"
+		"[root] aws_subnet.variables_subnet (expand)" -> "[root] aws_vpc.vpc (expand)"
+		"[root] aws_subnet.variables_subnet (expand)" -> "[root] var.variables_sub_auto_ip"
+		"[root] aws_subnet.variables_subnet (expand)" -> "[root] var.variables_sub_az"
+		"[root] aws_subnet.variables_subnet (expand)" -> "[root] var.variables_sub_cidr"
+		"[root] aws_vpc.vpc (expand)" -> "[root] data.aws_region.current (expand)"
+		"[root] aws_vpc.vpc (expand)" -> "[root] var.vpc_cidr"
+		"[root] aws_vpc.vpc (expand)" -> "[root] var.vpc_name"
+		"[root] data.aws_ami.ubuntu (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] data.aws_ami.ubuntu_22_04 (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] data.aws_availability_zones.available (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] data.aws_region.current (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] local.server_name (expand)" -> "[root] var.environment"
+		"[root] local.server_name (expand)" -> "[root] var.variables_sub_az"
+		"[root] local_file.private_key_pem (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/local\"]"
+		"[root] local_file.private_key_pem (expand)" -> "[root] tls_private_key.generated (expand)"
+		"[root] module.server (close)" -> "[root] module.server.output.public_dns (expand)"
+		"[root] module.server (close)" -> "[root] module.server.output.public_ip (expand)"
+		"[root] module.server (close)" -> "[root] module.server.output.size (expand)"
+		"[root] module.server.aws_instance.web (expand)" -> "[root] module.server.var.ami (expand)"
+		"[root] module.server.aws_instance.web (expand)" -> "[root] module.server.var.security_groups (expand)"
+		"[root] module.server.aws_instance.web (expand)" -> "[root] module.server.var.size (expand)"
+		"[root] module.server.aws_instance.web (expand)" -> "[root] module.server.var.subnet_id (expand)"
+		"[root] module.server.output.public_dns (expand)" -> "[root] module.server.aws_instance.web (expand)"
+		"[root] module.server.output.public_ip (expand)" -> "[root] module.server.aws_instance.web (expand)"
+		"[root] module.server.output.size (expand)" -> "[root] module.server.aws_instance.web (expand)"
+		"[root] module.server.var.ami (expand)" -> "[root] data.aws_ami.ubuntu_22_04 (expand)"
+		"[root] module.server.var.ami (expand)" -> "[root] module.server (expand)"
+		"[root] module.server.var.security_groups (expand)" -> "[root] aws_security_group.ingress-ssh (expand)"
+		"[root] module.server.var.security_groups (expand)" -> "[root] aws_security_group.vpc-ping (expand)"
+		"[root] module.server.var.security_groups (expand)" -> "[root] aws_security_group.vpc-web (expand)"
+		"[root] module.server.var.security_groups (expand)" -> "[root] module.server (expand)"
+		"[root] module.server.var.size (expand)" -> "[root] module.server (expand)"
+		"[root] module.server.var.subnet_id (expand)" -> "[root] aws_subnet.public_subnets (expand)"
+		"[root] module.server.var.subnet_id (expand)" -> "[root] module.server (expand)"
+		"[root] module.server_subnet_1 (close)" -> "[root] module.server_subnet_1.output.public_dns (expand)"
+		"[root] module.server_subnet_1 (close)" -> "[root] module.server_subnet_1.output.public_ip (expand)"
+		"[root] module.server_subnet_1.aws_instance.web (expand)" -> "[root] module.server_subnet_1.var.ami (expand)"
+		"[root] module.server_subnet_1.aws_instance.web (expand)" -> "[root] module.server_subnet_1.var.key_name (expand)"
+		"[root] module.server_subnet_1.aws_instance.web (expand)" -> "[root] module.server_subnet_1.var.private_key (expand)"
+		"[root] module.server_subnet_1.aws_instance.web (expand)" -> "[root] module.server_subnet_1.var.security_groups (expand)"
+		"[root] module.server_subnet_1.aws_instance.web (expand)" -> "[root] module.server_subnet_1.var.size (expand)"
+		"[root] module.server_subnet_1.aws_instance.web (expand)" -> "[root] module.server_subnet_1.var.subnet_id (expand)"
+		"[root] module.server_subnet_1.aws_instance.web (expand)" -> "[root] module.server_subnet_1.var.user (expand)"
+		"[root] module.server_subnet_1.output.public_dns (expand)" -> "[root] module.server_subnet_1.aws_instance.web (expand)"
+		"[root] module.server_subnet_1.output.public_ip (expand)" -> "[root] module.server_subnet_1.aws_instance.web (expand)"
+		"[root] module.server_subnet_1.var.ami (expand)" -> "[root] data.aws_ami.ubuntu (expand)"
+		"[root] module.server_subnet_1.var.ami (expand)" -> "[root] module.server_subnet_1 (expand)"
+		"[root] module.server_subnet_1.var.key_name (expand)" -> "[root] aws_key_pair.generated (expand)"
+		"[root] module.server_subnet_1.var.key_name (expand)" -> "[root] module.server_subnet_1 (expand)"
+		"[root] module.server_subnet_1.var.private_key (expand)" -> "[root] module.server_subnet_1 (expand)"
+		"[root] module.server_subnet_1.var.private_key (expand)" -> "[root] tls_private_key.generated (expand)"
+		"[root] module.server_subnet_1.var.security_groups (expand)" -> "[root] aws_security_group.ingress-ssh (expand)"
+		"[root] module.server_subnet_1.var.security_groups (expand)" -> "[root] aws_security_group.vpc-ping (expand)"
+		"[root] module.server_subnet_1.var.security_groups (expand)" -> "[root] aws_security_group.vpc-web (expand)"
+		"[root] module.server_subnet_1.var.security_groups (expand)" -> "[root] module.server_subnet_1 (expand)"
+		"[root] module.server_subnet_1.var.size (expand)" -> "[root] module.server_subnet_1 (expand)"
+		"[root] module.server_subnet_1.var.subnet_id (expand)" -> "[root] aws_subnet.public_subnets (expand)"
+		"[root] module.server_subnet_1.var.subnet_id (expand)" -> "[root] module.server_subnet_1 (expand)"
+		"[root] module.server_subnet_1.var.user (expand)" -> "[root] module.server_subnet_1 (expand)"
+		"[root] module.subnet_addrs (close)" -> "[root] module.subnet_addrs.output.base_cidr_block (expand)"
+		"[root] module.subnet_addrs (close)" -> "[root] module.subnet_addrs.output.network_cidr_blocks (expand)"
+		"[root] module.subnet_addrs (close)" -> "[root] module.subnet_addrs.output.networks (expand)"
+		"[root] module.subnet_addrs.local.addrs_by_idx (expand)" -> "[root] module.subnet_addrs.var.base_cidr_block (expand)"
+		"[root] module.subnet_addrs.local.addrs_by_idx (expand)" -> "[root] module.subnet_addrs.var.networks (expand)"
+		"[root] module.subnet_addrs.local.addrs_by_name (expand)" -> "[root] module.subnet_addrs.local.addrs_by_idx (expand)"
+		"[root] module.subnet_addrs.local.network_objs (expand)" -> "[root] module.subnet_addrs.local.addrs_by_idx (expand)"
+		"[root] module.subnet_addrs.output.base_cidr_block (expand)" -> "[root] module.subnet_addrs.var.base_cidr_block (expand)"
+		"[root] module.subnet_addrs.output.network_cidr_blocks (expand)" -> "[root] module.subnet_addrs.local.addrs_by_name (expand)"
+		"[root] module.subnet_addrs.output.networks (expand)" -> "[root] module.subnet_addrs.local.network_objs (expand)"
+		"[root] module.subnet_addrs.var.base_cidr_block (expand)" -> "[root] module.subnet_addrs (expand)"
+		"[root] module.subnet_addrs.var.networks (expand)" -> "[root] module.subnet_addrs (expand)"
+		"[root] output.public_ip (expand)" -> "[root] module.server.output.public_ip (expand)"
+		"[root] output.public_url (expand)" -> "[root] aws_instance.web_server (expand)"
+		"[root] output.size (expand)" -> "[root] module.server.output.size (expand)"
+		"[root] output.vpc_id (expand)" -> "[root] aws_vpc.vpc (expand)"
+		"[root] output.vpc_information (expand)" -> "[root] aws_vpc.vpc (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_instance.web_server (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_route_table_association.private (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_route_table_association.public (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_subnet.variables_subnet (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] module.server.aws_instance.web (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] module.server_subnet_1.aws_instance.web (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/local\"] (close)" -> "[root] local_file.private_key_pem (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/tls\"] (close)" -> "[root] tls_private_key.generated (expand)"
+		"[root] root" -> "[root] module.server (close)"
+		"[root] root" -> "[root] module.server_subnet_1 (close)"
+		"[root] root" -> "[root] module.subnet_addrs (close)"
+		"[root] root" -> "[root] output.hello-world (expand)"
+		"[root] root" -> "[root] output.public_ip (expand)"
+		"[root] root" -> "[root] output.public_url (expand)"
+		"[root] root" -> "[root] output.size (expand)"
+		"[root] root" -> "[root] output.vpc_id (expand)"
+		"[root] root" -> "[root] output.vpc_information (expand)"
+		"[root] root" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)"
+		"[root] root" -> "[root] provider[\"registry.terraform.io/hashicorp/local\"] (close)"
+		"[root] root" -> "[root] provider[\"registry.terraform.io/hashicorp/tls\"] (close)"
+		"[root] root" -> "[root] var.aws_region"
+		"[root] tls_private_key.generated (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/tls\"]"
+	}
+}
+
